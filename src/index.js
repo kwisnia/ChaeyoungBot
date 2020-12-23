@@ -4,6 +4,7 @@ const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix } = require("../config.json");
 const client = new Discord.Client();
+const riskyWords = ["pedof", "pedop"];
 client.commands = new Discord.Collection();
 const commandFiles = fs
   .readdirSync("./src/commands")
@@ -22,13 +23,17 @@ client.login(process.env.TOKEN);
 client.on("message", gotMessage);
 
 function gotMessage(msg) {
+  if (riskyWords.some((word) => msg.content.includes(word))) {
+    msg.channel.send(
+      ":oncoming_police_car: risky risky wiggy wiggy this is an emergency :oncoming_police_car:"
+    );
+    return;
+  }
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
-
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
 
   if (!client.commands.has(command)) return;
-
   try {
     client.commands.get(command).execute(msg, args);
   } catch (error) {
