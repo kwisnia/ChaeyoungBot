@@ -3,7 +3,12 @@ require("dotenv").config();
 const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix } = require("../config.json");
-const { name } = require("./commands/najmanvid");
+var http = require('http');  
+
+http.createServer(function (req, res) {   
+  res.write("I'm alive");   
+  res.end(); 
+}).listen(8080);
 const client = new Discord.Client();
 const riskyWords = ["pedof", "pedop"];
 client.commands = new Discord.Collection();
@@ -19,6 +24,16 @@ for (const file of commandFiles) {
 client.once("ready", () => {
   console.log("Risky risky");
 });
+
+client.on('ready', () => {
+
+  console.log('Your Bot is now Online.')
+  let activities = [`CRY FOR ME`, `CRY FOR ME`, `CRY FOR ME`   ],i = 0;
+
+  setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"LISTENING",  }), 5000)
+
+
+})
 
 client.login(process.env.TOKEN);
 client.on("message", gotMessage);
