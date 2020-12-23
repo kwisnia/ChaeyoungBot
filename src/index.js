@@ -3,6 +3,7 @@ require("dotenv").config();
 const fs = require("fs");
 const Discord = require("discord.js");
 const { prefix } = require("../config.json");
+const { name } = require("./commands/najmanvid");
 const client = new Discord.Client();
 const riskyWords = ["pedof", "pedop"];
 client.commands = new Discord.Collection();
