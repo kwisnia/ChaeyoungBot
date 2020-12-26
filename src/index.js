@@ -51,8 +51,8 @@ function gotMessage(msg) {
       "Fancy, woo!"
     );
     reactFancy(msg);
-    return;
   }
+  reactIdol(msg);
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const command = args.shift().toLowerCase();
@@ -63,6 +63,18 @@ function gotMessage(msg) {
   } catch (error) {
     console.error(error);
     msg.reply("there was an error trying to execute that command!");
+  }
+}
+
+function reactIdol(msg) {
+  let idols = ["Jihyo", "Sana", "Mina", "Momo", "Chaeyoung", "Dahyun", "Nayeon", "Jeongyeon", "Tzuyu"]
+  let emotes = ["<:gruba:787997801438904330>", "<:sanah:787999428157505536>", "<:smutnamina:785973154266873877>",
+   "<:typowajaponka:788001654502719489>", "<:faworytka:788039538362679306>", "<:dahyun:788009442884321310>",
+    "<:komedia:776850321585995806>", "<:silnaniezalezna:788043791243673660>", "<:wolnytajwan:789270621141991474>"]
+  for (i = 0; i < idols.length; i++) {
+    if (msg.content.toLowerCase.includes(idols[i])) {
+      msg.react(emotes[i])
+    }
   }
 }
 
