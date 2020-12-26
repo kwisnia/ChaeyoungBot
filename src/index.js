@@ -43,6 +43,14 @@ function gotMessage(msg) {
     msg.channel.send(
       ":oncoming_police_car: risky risky wiggy wiggy this is an emergency :oncoming_police_car:"
     );
+    msg.react("<:faworytkazamknijmorde:788039637892595733>");
+    msg.react("👮");
+  }
+    if (msg.content.toLowerCase().includes("fancy") && !msg.author.bot) {
+    msg.channel.send(
+      "Fancy, woo!"
+    );
+    reactFancy(msg);
     return;
   }
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
@@ -56,4 +64,16 @@ function gotMessage(msg) {
     console.error(error);
     msg.reply("there was an error trying to execute that command!");
   }
+}
+
+function reactFancy(msg) {
+    msg.react("🇫");
+    msg.react("🇦");
+    msg.react("🇳");
+    msg.react("🇨");
+    msg.react("🇾");
+    msg.react("🇼");
+    msg.react("🇴");
+    msg.react("🅾️");
+    msg.react("<:faworytka:788039538362679306>");
 }
