@@ -46,7 +46,7 @@ function gotMessage(msg) {
     msg.react("<:faworytkazamknijmorde:788039637892595733>");
     msg.react("👮");
   }
-    if (msg.content.toLowerCase().includes("fancy") && !msg.author.bot) {
+  if (msg.content.toLowerCase().includes("fancy") && !msg.author.bot) {
     msg.channel.send(
       "Fancy, woo!"
     );
@@ -67,12 +67,14 @@ function gotMessage(msg) {
 }
 
 function reactIdol(msg) {
-  let idols = ["Jihyo", "Sana", "Mina", "Momo", "Chaeyoung", "Dahyun", "Nayeon", "Jeongyeon", "Tzuyu"]
+  let idols = ["jihyo", "sana", "mina", "momo", "chaeyoung", "dahyun", "nayeon", "jeongyeon", "tzuyu"]
   let emotes = ["<:gruba:787997801438904330>", "<:sanah:787999428157505536>", "<:smutnamina:785973154266873877>",
    "<:typowajaponka:788001654502719489>", "<:faworytka:788039538362679306>", "<:dahyun:788009442884321310>",
     "<:komedia:776850321585995806>", "<:silnaniezalezna:788043791243673660>", "<:wolnytajwan:789270621141991474>"]
   for (i = 0; i < idols.length; i++) {
-    if (msg.content.toLowerCase.includes(idols[i])) {
+    console.log(idols[i]);
+    if (msg.content.toLowerCase().includes(idols[i]) && !msg.author.bot) {
+      console.log("hejhej");
       msg.react(emotes[i])
     }
   }
