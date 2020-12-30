@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/kwisnia/ChaeyoungBot#readme",
   "dependencies": {
+    "cron": "^1.8.2",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "novelcovid": "^3.0.0"
   }
 }
