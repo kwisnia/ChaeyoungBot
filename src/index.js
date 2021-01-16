@@ -28,7 +28,7 @@ client.once("ready", () => {
 
 client.on('ready', () => {
 
-  console.log('Your Bot is now Online.')
+  console.log('Your Bot is now Online.');
   let activities = [`CRY FOR ME`, `CRY FOR ME`, `CRY FOR ME`   ],i = 0;
 
   setInterval(() => client.user.setActivity(`${activities[i++ %  activities.length]}`,  {type:"LISTENING",  }), 5000)
@@ -39,8 +39,8 @@ client.on('ready', () => {
 client.login(process.env.TOKEN);
 client.on("message", gotMessage);
 
-let covidUpdate = new cron.CronJob('00 00 11 * * *', async () => {
-  let channel = client.channels.get('793824865005731900');
+let covidUpdate = new cron.CronJob('00 00 10 * * *', async () => {
+  let channel = client.channels.cache.get('793824865005731900');
       const api = require('novelcovid');
     api.settings({
       baseUrl: 'https://corona.lmao.ninja'
@@ -54,8 +54,34 @@ let covidUpdate = new cron.CronJob('00 00 11 * * *', async () => {
 
 Stay safe!`)
 });
+  covidUpdate.start();
 
-covidUpdate.start();
+let martwymem23losowanie = new cron.CronJob('00 00 06 * * *', () => {
+    nicknames = ['Usecase: umieranie', 'Pietrek', 'Pora umierać', 
+            'Panie Piotrze', 'Nienawidze Debila z profesurą', 
+            'Dupa nie wykres', 'Chwileczkę', 'Walenie na wykres', 
+            'Kocham XMLa', 'W chuju mam XMLa', 'Mental Breakdown', 
+            'Positive Vibes Only', 'Chuj mnie strzela', 'Jeabać Szczepaniaka',
+            'Nie wiem ale sie wypowiem', 'Sprawdź checkstyle', 'Nienawidze XMLa',
+            'werd me daddy', 'Słony Piotruś  🧂']
+    var currentIndex = nicknames.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = nicknames[currentIndex];
+    nicknames[currentIndex] = nicknames[randomIndex];
+    nicknames[randomIndex] = temporaryValue;
+  }
+  client.guilds.cache.get(`641947344765452298`).members.fetch('684428967192690708').then(member => member.setNickname(nicknames[0]));
+});
+martwymem23losowanie.start();
+
 
 function gotMessage(msg) {
   if (riskyWords.some((word) => msg.content.includes(word))) {
