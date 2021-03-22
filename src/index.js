@@ -51,7 +51,7 @@ let covidUpdate = new cron.CronJob('00 00 10 * * *', async () => {
     **Nowych zakażeń: ${data.todayCases}
     Zmarło: ${data.todayDeaths}
     Wyzdrowiało: ${data.todayRecovered}**
-
+    
 Stay safe!`)
 });
   covidUpdate.start();
@@ -63,7 +63,7 @@ let martwymem23losowanie = new cron.CronJob('00 00 06 * * *', () => {
             'Kocham XMLa', 'W chuju mam XMLa', 'Mental Breakdown', 
             'Positive Vibes Only', 'Chuj mnie strzela', 'Jeabać Szczepaniaka',
             'Nie wiem ale sie wypowiem', 'Sprawdź checkstyle', 'Nienawidze XMLa',
-            'werd me daddy', 'Słony Piotruś  🧂']
+            'werd me daddy', 'Słony Piotruś  🧂', 'To by nic nie dało i tak', 'maseczka+/ogródek+', 'Drude', 'Piotruś', 'Kałuża gówna', 'Eliksir dobrego nastroju', 'martwymem23', 'Łysa Królewna', 'Project baby', 'Komperzon', 'Warstat', 'ⁿᵒ ᶻʳóᵇ', 'No walls 🙅🏼‍♂️', 'Tonczak']
     var currentIndex = nicknames.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
