@@ -112,13 +112,15 @@ function gotMessage(msg) {
 }
 
 function reactIdol(msg) {
-  let idols = ["Jihyo", "Sezonowa gruba", "Sana", "Mina", "Momo", "Chaeyoung", "Zamknij mordę", "Dahyun", "Nayeon", "Jeongyeon", "Tzuyu", "Yeji", "Lia", "Ryujin", "Chaeryeong", "Yuna"]
+  let idols = ["Jihyo", "Sezonowa gruba", "Sana", "Mina", "Momo", "Chaeyoung", "Zamknij mordę", "Dahyun", "Nayeon",
+   "Jeongyeon", "Tzuyu", "Yeji", "Lia", "Ryujin", "Chaeryeong", "Yuna", "Jennie", "Lisa", "Jisoo", "Rose"]
   let idolsalt = ["Gruba", "Sezonowa gruba", "Sanah", "Smutna japonka", "Typowa japonka", "Faworytka", "Zamknij morde", "Dahyun", "Glitter Queen",
-   "Silna niezależna", "Wolny tajwan", "Yeji", "Lia", "Chania", "Chaeryeong", "I keep walking"]
+   "Silna niezależna", "Wolny tajwan", "Yeji", "Lia", "Chania", "Chaeryeong", "I keep walking", "solo", "smile", "not scary", "Rosé"]
   let emotes = ["<:gruba:787997801438904330>", "<:sezonowagruba:788040305378721822>", "<:sanah:787999428157505536>", "<:smutnamina:785973154266873877>",
    "<:typowajaponka:788001654502719489>", "<:faworytka:788039538362679306>", "<:faworytkazamknijmorde:788039637892595733>", "<:dahyun:788009442884321310>",
     "<:komedia:776850321585995806>", "<:silnaniezalezna:788043791243673660>", "<:wolnytajwan:789270621141991474>",
-     "<:yeji:788039002623311883>", "<:lia:788041277686022194>", "<:chania:788006813533732900>", "<:chaeryeong:788009565500342303>", "<:ikeepwalking:769684288484016150>"]
+     "<:yeji:788039002623311883>", "<:lia:788041277686022194>", "<:chania:788006813533732900>", "<:chaeryeong:788009565500342303>", "<:ikeepwalking:769684288484016150>",
+    "<:jennie:820945670130368512>", "<:lisa:820941733143248907>", "<:jisoo:820945670097731585>", "<:tulipan:820945670240337930>"]
   for (i = 0; i < idols.length; i++) {
     if ((msg.content.toLowerCase().includes(idols[i].toLowerCase()) || msg.content.toLowerCase().includes(idolsalt[i].toLowerCase())) && !msg.author.bot) {
       msg.react(emotes[i])
