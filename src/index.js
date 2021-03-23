@@ -116,7 +116,11 @@ let martwymem23losowanie = new cron.CronJob("00 00 06 * * *", () => {
   client.guilds.cache
     .get(`641947344765452298`)
     .members.fetch("684428967192690708")
-    .then((member) => member.setNickname(nicknames[0]));
+    .then((member) =>
+      member.setNickname(
+        client.commands.get("martwymem").execute({}, ["pobierz"])
+      )
+    );
 });
 martwymem23losowanie.start();
 
@@ -142,6 +146,9 @@ function gotMessage(msg) {
     client.commands.find(
       (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
     );
+  if (command.args && !args.length) {
+    return message.channel.send(`Nie podałeś argumentów, ${msg.author}!`);
+  }
 
   if (!command) return;
   try {
