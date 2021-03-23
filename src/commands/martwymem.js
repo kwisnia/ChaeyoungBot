@@ -1,4 +1,5 @@
 module.exports = {
+  args: true,
   name: "maranda",
   aliases: ["mirinda", "fanta"],
   description:
