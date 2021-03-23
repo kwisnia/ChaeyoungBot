@@ -25,6 +25,8 @@ module.exports = {
         memes[Math.floor(Math.random() * Math.floor(memes.length))];
       console.log(memeOfTheDay);
       return memeOfTheDay;
+    } else if (args[0] === "wyswietl") {
+        message.channel.send(`\`\`\`${memes}\`\`\``)
     } else {
       return message.channel.send("Incorrect argument");
     }
