@@ -1,5 +1,6 @@
 module.exports = {
   name: "riskyrisky",
+  aliases: ["risky"],
   description: "https://www.youtube.com/watch?v=_xtJWYcBsoY",
   execute(message, args) {
     message.channel.send(

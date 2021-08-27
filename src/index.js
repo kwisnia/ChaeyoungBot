@@ -5,6 +5,7 @@ const Discord = require("discord.js");
 const { prefix } = require("../config.json");
 const cron = require("cron");
 var http = require("http");
+var _ = require('underscore');
 
 http
   .createServer(function (req, res) {
@@ -30,7 +31,7 @@ client.once("ready", () => {
 
 client.on("ready", () => {
   console.log("Your Bot is now Online.");
-  let activities = [`CRY FOR ME`, `CRY FOR ME`, `CRY FOR ME`],
+  let activities = [`Perfect World`, `Perfect World`, `Perfect World`],
     i = 0;
 
   setInterval(
@@ -137,6 +138,12 @@ function gotMessage(msg) {
     reactFancy(msg);
   }
   reactIdol(msg);
+  reactHolt(msg);
+  reactKill(msg);
+      if (msg.mentions.has(client.user.id) && msg.content.includes("❤️")) {
+        msg.channel.send(`${msg.author} ❤️
+https://tenor.com/view/chaeyoung-son-chaeyoung-twice-cute-gif-19442356`);
+    }
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
@@ -146,11 +153,11 @@ function gotMessage(msg) {
     client.commands.find(
       (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
     );
+  if (!command) return;
   if (command.args && !args.length) {
     return message.channel.send(`Nie podałeś argumentów, ${msg.author}!`);
   }
 
-  if (!command) return;
   try {
     command.execute(msg, args);
   } catch (error) {
@@ -181,11 +188,12 @@ function reactIdol(msg) {
     "Lisa",
     "Jisoo",
     "Rose",
+    "Holt",
   ];
   let idolsalt = [
     "Gruba",
     "Sezonowa gruba",
-    "Sanah",
+    "Gay",
     "Smutna japonka",
     "Typowa japonka",
     "Faworytka",
@@ -203,6 +211,7 @@ function reactIdol(msg) {
     "smile",
     "not scary",
     "Rosé",
+    "React",
   ];
   let emotes = [
     "<:gruba:787997801438904330>",
@@ -225,6 +234,7 @@ function reactIdol(msg) {
     "<:lisa:820941733143248907>",
     "<:jisoo:820945670097731585>",
     "<:tulipan:820945670240337930>",
+    "<:holt:826127694752251955>",
   ];
   for (i = 0; i < idols.length; i++) {
     if (
@@ -247,4 +257,30 @@ function reactFancy(msg) {
   msg.react("🇴");
   msg.react("🅾️");
   msg.react("<:faworytka:788039538362679306>");
+}
+
+function reactHolt(msg) {
+  if (msg.author.bot || msg.channel.id !== "644608604959408156") return;
+  if(msg.content.includes("?")) {
+    msg.react("<:holt:826127694752251955>");
+    // msg.channel.send(
+    //   "<:holt:826127694752251955>" +
+    //   _.sample([
+    //   "Great question.",
+    //   "Good question.",
+    //   "That's a great question!",
+    //   `So the question was:\`\`\`${msg.content}\`\`\``,
+    //   "Yeah, that's a good question.",
+    //   "Other questions?",
+    //   "Any questions?",
+    //   "That clear? Cool.",
+    // ]) + "<:holt:826127694752251955>")
+  }
+}
+
+function reactKill(msg) {
+    if (msg.content.toLowerCase().includes("zabij") && msg.content.toLowerCase().includes("mnie") && !msg.author.bot) {
+      msg.react("<:faworytkazamknijmorde:788039637892595733>");
+      msg.channel.send("https://cdn.discordapp.com/attachments/791363713969815583/834175881387049000/ZcpSqaG.png");
+  }
 }

@@ -1,5 +1,6 @@
 module.exports = {
   name: "faworytka",
+  aliases: ["ty", "chae"],
   description: "Self-aware bot shock",
   async execute(message, args) {
     const fetch = require("node-fetch");
