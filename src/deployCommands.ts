@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import { REST } from '@discordjs/rest';
 import { APIApplicationCommandOption, Routes } from 'discord-api-types/v9';
 import * as winston from 'winston';
-import { clientId, guildId, token } from '../config.json';
+import { clientId, token } from '../config.json';
 import { ICommand } from './services/interaction/ICommand';
 
 interface ISlashCommandJSON {
@@ -38,7 +38,7 @@ const rest = new REST({ version: '9' }).setToken(token);
       };
       commands.push(command.data.toJSON());
     }
-    await rest.put(Routes.applicationGuildCommands(clientId, guildId), {
+    await rest.put(Routes.applicationCommands(clientId), {
       body: commands,
     });
 
