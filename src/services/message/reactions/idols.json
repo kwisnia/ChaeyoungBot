@@ -1,0 +1,130 @@
+{
+  "idols": [
+    {
+      "names": ["Jihyo", "Gruba", "God"],
+      "emotes": ["<:gruba:787997801438904330>"]
+    },
+    {
+      "names": ["Sezonowa gruba"],
+      "emotes": ["<:sezonowagruba:788040305378721822>"]
+    },
+    {
+      "names": ["Sana", "Gay"],
+      "emotes": ["<:sanah:787999428157505536>"]
+    },
+    {
+      "names": ["Mina", "Smutna japonka"],
+      "emotes": ["<:smutnamina:785973154266873877>"]
+    },
+    {
+      "names": ["Momo", "Typowa japonka"],
+      "emotes": ["<:typowajaponka:788001654502719489>"]
+    },
+    {
+      "names": ["Chaeyoung", "Faworytka", "Icon"],
+      "emotes": ["<:faworytka:788039538362679306>"]
+    },
+    {
+      "names": ["Zamknij mordę", "Zamknij morde"],
+      "emotes": ["<:faworytkazamknijmorde:788039637892595733>"]
+    },
+    {
+      "names": ["Dahyun"],
+      "emotes": ["<:dahyun:788009442884321310>"]
+    },
+    {
+      "names": [
+        "Nayeon",
+        "Glitter Queen",
+        "Cringe",
+        "Krindż",
+        "Cringuwa",
+        "Krindżuwa"
+      ],
+      "emotes": ["<:komedia:776850321585995806>"]
+    },
+    {
+      "names": ["Jeongyeon", "Silna niezależna", "Silna niezalezna"],
+      "emotes": ["<:silnaniezalezna:788043791243673660>"]
+    },
+    {
+      "names": ["Tzuyu", "Wojny tajwan"],
+      "emotes": ["<:wolnytajwan:789270621141991474>"]
+    },
+    {
+      "names": ["Yeji"],
+      "emotes": ["<:yeji:788039002623311883>"]
+    },
+    {
+      "names": ["Lia"],
+      "emotes": ["<:lia:788041277686022194>"]
+    },
+    {
+      "names": [
+        "Kraska",
+        "Ryujin",
+        "Hani",
+        "Chani",
+        "Hanna",
+        "Channa",
+        "strawberry milk",
+        "bezużyteczna"
+      ],
+      "emotes": ["<:chania:788006813533732900>"]
+    },
+    {
+      "names": ["Chaeryeong"],
+      "emotes": ["<:chaeryeong:788009565500342303>"]
+    },
+    {
+      "names": ["Yuna", "I keep walking", "They keep talking"],
+      "emotes": ["<:ikeepwalking:769684288484016150>"]
+    },
+    {
+      "names": ["Jennie", "solo"],
+      "emotes": ["<:jennie:820945670130368512>"]
+    },
+    {
+      "names": ["Lisa", "smile"],
+      "emotes": ["<:lisa:820941733143248907>"]
+    },
+    {
+      "names": ["Jisoo", "Not scary"],
+      "emotes": ["<:jisoo:820945670097731585>"]
+    },
+    {
+      "names": ["Rose", "Rosé"],
+      "emotes": ["<:tulipan:820945670240337930>"]
+    },
+    {
+      "names": ["Holt", "React", "question"],
+      "emotes": ["<:holt:826127694752251955>"]
+    },
+    {
+      "names": ["Twice"],
+      "emotes": [
+        "<:gruba:787997801438904330>",
+        "<:sezonowagruba:788040305378721822>",
+        "<:sanah:787999428157505536>",
+        "<:smutnamina:785973154266873877>",
+        "<:typowajaponka:788001654502719489>",
+        "<:faworytka:788039538362679306>",
+        "<:faworytkazamknijmorde:788039637892595733>",
+        "<:dahyun:788009442884321310>",
+        "<:komedia:776850321585995806>",
+        "<:silnaniezalezna:788043791243673660>",
+        "<:wolnytajwan:789270621141991474>"
+      ]
+    },
+    {
+      "names": ["Itzy"],
+      "emotes": [
+        "<:yeji:788039002623311883>",
+        "<:lia:788041277686022194>",
+        "<:chania:788006813533732900>",
+        "<:chaeryeong:788009565500342303>",
+        "<:ikeepwalking:769684288484016150>"
+      ]
+    }
+  ]
+}
