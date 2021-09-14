@@ -46,6 +46,15 @@ container.bind<Client>(BOT_TYPES.Client).toConstantValue(
       Intents.FLAGS.DIRECT_MESSAGES,
       Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
     ],
+    presence: {
+      activities: [
+        {
+          name: 'The Feels',
+          type: 'LISTENING',
+          url: 'https://www.youtube.com/watch?v=fmOEKOjyDxU',
+        },
+      ],
+    },
   }),
 );
 container.bind<winston.Logger>(BOT_TYPES.Logger).toConstantValue(logger);

@@ -43,7 +43,9 @@ class InteractionService implements IInteractionService {
     interaction: MessageComponentInteraction,
   ): Promise<void> {
     const commandName = interaction.customId.split('-')[0];
-    this.logger.info(`Component for command ${commandName} clicked`);
+    this.logger.info(
+      `Component for command ${commandName} clicked by ${interaction.user.username}`,
+    );
     const command = this.commandRepository.getCommand(commandName);
     if (!command) {
       throw new CommandDoesNotExistError('Command does not exist');
