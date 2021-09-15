@@ -55,6 +55,7 @@ container.bind<Client>(BOT_TYPES.Client).toConstantValue(
         },
       ],
     },
+    partials: ['CHANNEL']
   }),
 );
 container.bind<winston.Logger>(BOT_TYPES.Logger).toConstantValue(logger);
