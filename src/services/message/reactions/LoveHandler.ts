@@ -11,11 +11,11 @@ class LoveHandler implements IReactHandler {
   constructor(@inject(BOT_TYPES.Logger) private logger: Logger) {}
 
   public check(message: Message): boolean {
+    const isReplyToBot =
+      message.type === 'REPLY' && message.mentions.repliedUser!.id === BOT_ID;
     if (
-      message.mentions.has(BOT_ID) ||
-      (message.type === 'REPLY' &&
-        message.mentions.repliedUser!.id === BOT_ID &&
-        message.content.includes('❤️'))
+      (message.mentions.has(BOT_ID) || isReplyToBot) &&
+      message.content.includes('❤️')
     ) {
       this.logger.info('<3');
       return true;
