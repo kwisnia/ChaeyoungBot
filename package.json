@@ -2,7 +2,7 @@
   "name": "chaeyoungbot",
   "version": "2.0.0",
   "description": "A simple discord bot for my private server. Stan Jihyo.",
-  "main": "bot.js",
+  "main": "index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "watch": "tsc -p tsconfig.json -w",
