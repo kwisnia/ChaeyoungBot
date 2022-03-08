@@ -2,10 +2,10 @@ import { Client } from 'discord.js';
 import { Logger } from 'winston';
 import container from './inversify.config';
 import BOT_TYPES from './botTypes';
-import { token } from '../config.json';
 import { IEventController } from './events/IEventController';
 import { ICommandRepository } from './repositories/ICommandRepository';
 import { ICronJobRunner } from './services/cron/ICronJobRunner';
+import * as http from "http"
 
 const client = container.get<Client>(BOT_TYPES.Client);
 const eventController = container.get<IEventController>(
@@ -20,8 +20,24 @@ const cronJobRunner = container.get<ICronJobRunner>(
 const logger = container.get<Logger>(BOT_TYPES.Logger);
 
 (async () => {
+  http
+  .createServer(function (req, res) {
+    res.write("I'm alive");
+    res.end();
+  })
+  .listen(8080);
   client.on('ready', () => {
     logger.info('The bot is online!');
+    let activities = [`Scientist`, `Scientist`, `Scientist`],
+    i = 0;
+
+  setInterval(
+    () =>
+      client.user!.setActivity(`${activities[i++ % activities.length]}`, {
+        type: "LISTENING",
+      }),
+    5000
+  );
   });
   client.on('debug', (m) => {
     logger.debug(m);
@@ -36,5 +52,5 @@ const logger = container.get<Logger>(BOT_TYPES.Logger);
   await commandRepository.initCommands();
   await cronJobRunner.runAllJobs();
   process.on('uncaughtException', (error) => logger.error(error));
-  await client.login(token);
+  await client.login(process.env.token);
 })();

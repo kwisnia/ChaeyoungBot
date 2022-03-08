@@ -17,7 +17,7 @@ export const fetchGIF = async (searchParam: string): Promise<string> => {
 export const fetchCovid = async (): Promise<CovidData> => {
   try {
     const response = await axios.get(
-      'https://corona.lmao.ninja/v3/covid-19/countries/Poland?strict=true',
+      'https://disease.sh/v3/covid-19/countries/Poland?strict=true',
     );
     return Promise.resolve(response.data);
   } catch (e) {

@@ -1,14 +1,16 @@
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { IDeadMemeRepository } from './IDeadMemeRepository';
 
 const deadMemeRepository: IDeadMemeRepository = {
   getMemes: async () => {
-    const memesImport = await import('../commands/memy.json');
+    const memesImport = JSON.parse(readFileSync('./src/commands/memy.json', {
+      encoding: 'utf-8',
+    }));
     return Promise.resolve(memesImport.memes);
   },
   saveMemes: (memes: string[]) => {
     const memeObject = { memes };
-    writeFileSync('./memy.json', JSON.stringify(memeObject));
+    writeFileSync('./src/commands/memy.json', JSON.stringify(memeObject));
     return Promise.resolve();
   },
 };

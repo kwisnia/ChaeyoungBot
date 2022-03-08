@@ -14,7 +14,7 @@ class DeadMemeCronJob implements ICronJob {
     @inject(BOT_TYPES.Logger) private logger: Logger,
     @inject(BOT_TYPES.Client) private client: Client,
   ) {
-    this.job = new CronJob('00 00 10 * * *', async () => {
+    this.job = new CronJob('00 00 11 * * *', async () => {
       const channel = await this.client.channels.fetch('793824865005731900');
       if (channel && channel.isText()) {
         const data = await fetchCovid();
