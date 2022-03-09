@@ -48,3 +48,11 @@ export interface CovidData {
   recoveredPerOneMillion: number;
   criticalPerOneMillion: number;
 }
+
+export interface CurrencyExchangeRate {
+  success: true;
+  date: string;
+  rates: {
+    [currency: string]: number;
+  };
+}

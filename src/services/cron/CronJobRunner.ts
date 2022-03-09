@@ -10,11 +10,13 @@ class CronJobRunner implements ICronJobRunner {
     @inject(BOT_TYPES.Logger) private logger: Logger,
     @inject(BOT_TYPES.Service.Cron.Covid) private covidCronJob: ICronJob,
     @inject(BOT_TYPES.Service.Cron.DeadMeme) private deadMemeCronJob: ICronJob,
+    @inject(BOT_TYPES.Service.Cron.SemesterSix) private semesterSixCronJob: ICronJob,
   ) {}
 
   public async runAllJobs(): Promise<void> {
     await this.covidCronJob.run();
     await this.deadMemeCronJob.run();
+    await this.semesterSixCronJob.run();
     return Promise.resolve();
   }
 }

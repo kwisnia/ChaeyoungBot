@@ -23,6 +23,7 @@ import { IReactHandler } from './services/message/reactions/IReactHandler';
 import { ICronJob } from './services/cron/ICronJob';
 import { ICronJobRunner } from './services/cron/ICronJobRunner';
 import CronJobRunner from './services/cron/CronJobRunner';
+import SemesterSixCronJob from './services/cron/jobs/SemesterSixCronJob';
 
 const container = new Container();
 const logger = winston.createLogger({
@@ -90,5 +91,6 @@ container
 container.bind<ICronJobRunner>(BOT_TYPES.Service.Cron.Runner).to(CronJobRunner);
 container.bind<ICronJob>(BOT_TYPES.Service.Cron.Covid).to(CovidCronJob);
 container.bind<ICronJob>(BOT_TYPES.Service.Cron.DeadMeme).to(DeadMemeCronJob);
+container.bind<ICronJob>(BOT_TYPES.Service.Cron.SemesterSix).to(SemesterSixCronJob);
 
 export default container;

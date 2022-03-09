@@ -10,6 +10,7 @@ const BOT_TYPES = {
     Cron: {
       DeadMeme: Symbol.for('DeadMemeCronJob'),
       Covid: Symbol.for('CovidCronJob'),
+      SemesterSix: Symbol.for('SemesterSix'),
       Runner: Symbol.for('CronJobRunner'),
     },
     Message: {

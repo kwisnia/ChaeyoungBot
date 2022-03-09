@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import { tenorKey } from '../../config.json';
-import { CovidData, TenorAPIResponse } from './APIResponses';
+import { tenorKey, exchangeRateAccessKey } from '../../config.json';
+import { CovidData, CurrencyExchangeRate, TenorAPIResponse } from './APIResponses';
 
 export const fetchGIF = async (searchParam: string): Promise<string> => {
   try {
@@ -24,3 +24,15 @@ export const fetchCovid = async (): Promise<CovidData> => {
     return Promise.reject(e);
   }
 };
+
+export const fetchCurrencyExchangeRates = async (): Promise<CurrencyExchangeRate> => {
+  try {
+    const response = await axios.get(
+      `http://api.exchangeratesapi.io/v1/latest?access_key=${exchangeRateAccessKey}`,
+    );
+    return Promise.resolve(response.data);
+  } catch (e) {
+    return Promise.reject(e);
+  }
+
+}
