@@ -28,16 +28,6 @@ const logger = container.get<Logger>(BOT_TYPES.Logger);
     .listen(8080);
   client.on('ready', () => {
     logger.info('The bot is online!');
-    const activities = [`Scientist`, `Scientist`, `Scientist`];
-    let i = 0;
-
-    setInterval(
-      () =>
-        client.user!.setActivity(`${activities[i++ % activities.length]}`, {
-          type: 'LISTENING',
-        }),
-      5000,
-    );
   });
   client.on('debug', (m) => {
     logger.debug(m);
@@ -52,5 +42,9 @@ const logger = container.get<Logger>(BOT_TYPES.Logger);
   await commandRepository.initCommands();
   await cronJobRunner.runAllJobs();
   process.on('uncaughtException', (error) => logger.error(error));
-  await client.login(process.env.token);
+  try {
+    await client.login(process.env.token);
+  } catch (e) {
+    logger.error(e);
+  }
 })();

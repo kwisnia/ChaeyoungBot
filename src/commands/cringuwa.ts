@@ -12,7 +12,7 @@ const cringuwa: ICommand = {
   execute: async (interaction) => {
     row = new MessageActionRow().addComponents(
       new MessageButton()
-        .setCustomId('nayeon')
+        .setCustomId('cringuwa')
         .setLabel('Give me more')
         .setStyle('PRIMARY'),
     );

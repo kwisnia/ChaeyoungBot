@@ -31,9 +31,15 @@ const logger = winston.createLogger({
     new winston.transports.Console(),
     new winston.transports.File({ filename: 'log' }),
   ],
-  format: winston.format.printf(
-    (log) => `[${log.level.toUpperCase()}] - ${log.message}`,
+  format: winston.format.combine(
+    winston.format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss',
+    }),
+    winston.format.printf(
+      (log) => `[${log.level.toUpperCase()} ${log.timestamp}] - ${log.message}`,
+    ),
   ),
+  level: 'debug',
 });
 
 container.bind<Client>(BOT_TYPES.Client).toConstantValue(
@@ -56,7 +62,7 @@ container.bind<Client>(BOT_TYPES.Client).toConstantValue(
         },
       ],
     },
-    partials: ['CHANNEL']
+    partials: ['CHANNEL'],
   }),
 );
 container.bind<winston.Logger>(BOT_TYPES.Logger).toConstantValue(logger);
@@ -91,6 +97,8 @@ container
 container.bind<ICronJobRunner>(BOT_TYPES.Service.Cron.Runner).to(CronJobRunner);
 container.bind<ICronJob>(BOT_TYPES.Service.Cron.Covid).to(CovidCronJob);
 container.bind<ICronJob>(BOT_TYPES.Service.Cron.DeadMeme).to(DeadMemeCronJob);
-container.bind<ICronJob>(BOT_TYPES.Service.Cron.SemesterSix).to(SemesterSixCronJob);
+container
+  .bind<ICronJob>(BOT_TYPES.Service.Cron.SemesterSix)
+  .to(SemesterSixCronJob);
 
 export default container;

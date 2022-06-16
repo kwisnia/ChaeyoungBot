@@ -16,20 +16,19 @@ class IdolHandler implements IReactHandler {
   }
 
   public async react(message: Message): Promise<void> {
-    // eslint-disable-next-line no-restricted-syntax
-    for await (const idol of idols) {
+    idols.forEach((idol) => {
       if (
         idol.names.some((name) =>
           message.content.toLowerCase().includes(name.toLowerCase()),
         )
       ) {
         this.logger.info('Idol found');
-        // eslint-disable-next-line no-restricted-syntax
-        for await (const reaction of idol.emotes) {
-          await message.react(reaction);
-        }
+        idol.emotes.forEach((emote) => {
+          message.react(emote);
+        });
       }
-    }
+    });
+
     return Promise.resolve();
   }
 }

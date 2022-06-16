@@ -11,7 +11,6 @@ const TEXTS = [
   'Pamiętajcie że jak dziecko się trzyma to trzeba je zabić!',
   'Chciałbym mieć warsztat z motorami',
   'Naprawa kosztuje 500 zł',
-  'W czarnym do twarzy',
   'Mam kolegów w wojsku',
   'Jak zamieszkać w akademiku?',
   'Nie popełniajcie czynów powszechnie nieakceptowalnych w waszych gronach',
@@ -23,6 +22,7 @@ const CHANIA_HEARTRATE = [
   'Wysokie',
   'Jihyo scene in M/V',
   'Mina on stage',
+  'Yuqi',
 ];
 
 @injectable()
@@ -42,7 +42,7 @@ class SemesterSixCronJob implements ICronJob {
           .setTitle('Czcigodni, zjebany semestr update!')
           .addFields(
             {
-              name: 'Dni od wakacji',
+              name: 'Dni do wakacji',
               value: Math.floor(
                 DateTime.fromFormat('01/07/2022', 'dd/MM/yyyy').diffNow('days')
                   .days,
@@ -52,7 +52,7 @@ class SemesterSixCronJob implements ICronJob {
               name: 'Pozostałe lekcje KSR',
               value: Math.floor(
                 DateTime.fromFormat('20/06/2022', 'dd/MM/yyyy').diffNow('weeks')
-                  .weeks - 1,
+                  .weeks,
               ).toString(),
             },
             {
@@ -66,26 +66,26 @@ class SemesterSixCronJob implements ICronJob {
             },
             {
               name: '\u200B',
-              value: '**💸 1 Rubel jest warty:**',
+              value: '**💸 Kurs rubla:**',
             },
             {
-              name: '🐸 Żappsy',
-              value: (data.rates.RUB / data.rates.PLN / 4).toFixed(2),
+              name: '🐸 Żapps',
+              value: `${(data.rates.RUB / data.rates.PLN / 4).toFixed(2)} RUB`,
               inline: true,
             },
             {
-              name: '🧽 Eurogąbki',
-              value: (data.rates.RUB / data.rates.PLN / 10).toFixed(2),
+              name: '🧽 Eurogąbka',
+              value: `${(data.rates.RUB / data.rates.PLN / 10).toFixed(2)} RUB`,
               inline: true,
             },
             {
               name: '🤖 Robux',
-              value: (data.rates.RUB * 0.0125).toFixed(2),
+              value: `${(data.rates.RUB * 0.0125).toFixed(2)} RUB`,
               inline: true,
             },
           )
           .setTimestamp()
-          .setFooter({ text: TEXTS[Math.floor(Math.random() * TEXTS.length)] });
+          .setFooter(TEXTS[Math.floor(Math.random() * TEXTS.length)]);
         await channel.send({
           embeds: [embed],
         });
