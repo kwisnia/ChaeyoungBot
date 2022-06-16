@@ -4,7 +4,6 @@ import { joinVoiceChannel } from '@discordjs/voice';
 import { GuildMember } from 'discord.js';
 import { ICommand } from '../services/interaction/ICommand';
 import { MusicGuild } from '../typings/MusicGuild';
-import { youtubeCookie } from '../../config.json';
 import createNewAudioPlayer from '../utils/AudioPlayerFactory';
 
 const play: ICommand = {
@@ -43,10 +42,11 @@ const play: ICommand = {
       });
       return Promise.resolve();
     }
-    if (!dlplayer.yt_validate(url)) {
+    const youtubeCheck = dlplayer.yt_validate(url);
+    if (youtubeCheck === 'search' || !youtubeCheck) {
       const searchResults = await dlplayer.search(url, {
         limit: 1,
-        type: 'video',
+        source: { youtube: 'video' },
       });
       if (!searchResults[0]) {
         await interaction.reply({
@@ -55,17 +55,17 @@ const play: ICommand = {
         });
         return Promise.resolve();
       }
-      url = searchResults[0].url as string;
+      url = searchResults[0].url;
     }
     if (!guild.queue) {
       guild.queue = [];
     }
-    const songInfo = await dlplayer.video_info(url, youtubeCookie);
+    const songInfo = await dlplayer.video_basic_info(url);
     const newSong = {
-      title: songInfo.video_details.title,
+      title: songInfo.video_details.title || 'Unknown title',
       videoUrl: url,
       length: +songInfo.video_details.durationInSec,
-      thumbnailUrl: songInfo.video_details.thumbnail,
+      thumbnailUrl: songInfo.video_details.thumbnails[0].url,
     };
     guild.queue.push(newSong);
     if (guild.queue.length === 1) {

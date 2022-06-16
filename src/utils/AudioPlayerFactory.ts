@@ -7,14 +7,13 @@ import {
 } from '@discordjs/voice';
 import * as dlplayer from 'play-dl';
 import { ISong } from '../typings/ISong';
-import { youtubeCookie } from '../../config.json';
 
 const createNewAudioPlayer = async (
   queue: ISong[],
   connection: VoiceConnection,
 ): Promise<AudioPlayer> => {
   const player = createAudioPlayer();
-  let stream = await dlplayer.stream(queue[0].videoUrl, youtubeCookie);
+  let stream = await dlplayer.stream(queue[0].videoUrl);
   let resource = createAudioResource(stream.stream, {
     inputType: stream.type,
   });

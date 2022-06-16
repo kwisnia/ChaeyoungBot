@@ -85,7 +85,7 @@ class SemesterSixCronJob implements ICronJob {
             },
           )
           .setTimestamp()
-          .setFooter(TEXTS[Math.floor(Math.random() * TEXTS.length)]);
+          .setFooter({ text: TEXTS[Math.floor(Math.random() * TEXTS.length)] });
         await channel.send({
           embeds: [embed],
         });

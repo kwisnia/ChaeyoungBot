@@ -1,11 +1,11 @@
 import { Client } from 'discord.js';
 import { Logger } from 'winston';
+import * as http from 'http';
 import container from './inversify.config';
 import BOT_TYPES from './botTypes';
 import { IEventController } from './events/IEventController';
 import { ICommandRepository } from './repositories/ICommandRepository';
 import { ICronJobRunner } from './services/cron/ICronJobRunner';
-import * as http from "http"
 
 const client = container.get<Client>(BOT_TYPES.Client);
 const eventController = container.get<IEventController>(
@@ -21,23 +21,23 @@ const logger = container.get<Logger>(BOT_TYPES.Logger);
 
 (async () => {
   http
-  .createServer(function (req, res) {
-    res.write("I'm alive");
-    res.end();
-  })
-  .listen(8080);
+    .createServer((_, res) => {
+      res.write("I'm alive");
+      res.end();
+    })
+    .listen(8080);
   client.on('ready', () => {
     logger.info('The bot is online!');
-    let activities = [`Scientist`, `Scientist`, `Scientist`],
-    i = 0;
+    const activities = [`Scientist`, `Scientist`, `Scientist`];
+    let i = 0;
 
-  setInterval(
-    () =>
-      client.user!.setActivity(`${activities[i++ % activities.length]}`, {
-        type: "LISTENING",
-      }),
-    5000
-  );
+    setInterval(
+      () =>
+        client.user!.setActivity(`${activities[i++ % activities.length]}`, {
+          type: 'LISTENING',
+        }),
+      5000,
+    );
   });
   client.on('debug', (m) => {
     logger.debug(m);
